@@ -1,0 +1,104 @@
+{
+    "meta": {
+        "title": "StoryBoy",
+        "subtitle": "关注技术和人文的原创IT博客",
+        "description": "StoryBoy，程序员吕先生的技术博客。内容聚焦技术、产品和人文，网址：https://jilonglv.github.io。",
+        "author": "吕先生(https://jilonglv.github.io)",
+        "url": "https://jilonglv.github.io"
+    },
+    "pages": [
+        {
+            "title": "为何建站 && 为何写作",
+            "date": "2017-02-07T05:23:07.000Z",
+            "updated": "2018-01-20T13:16:25.112Z",
+            "comments": false,
+            "path": "about/index.html",
+            "permalink": "https://jilonglv.github.io/about/index.html",
+            "excerpt": "",
+            "text": "为何建站在我年轻的时候，独立站长曾是一个牛逼闪闪的角色，然而现在不那么神秘了。搭建StoryBoy这个网站主要是为了记录技术成长的点滴，当然装逼也是一个目的。 为何写写作 读的书越多，你会发现知道的东西越多，不知道的东西就更多了，不知道远远大于知道，于是你在两者间不断碰撞、焦虑、欢喜、忧伤，产生各种思想、情感和故事，记录下来，就是文章。 引自《MacTalk》跨越边界 显然，写作是个艺术活儿，这个博客是带有某种程序员感情的，如果你是这种艺术家，那就能共震了！ 本站主要作为技术笔记存档，内容主要涉及前端开发（含移动端），偶尔可能也会有一些碎碎念、开开车。如果某一篇帮助了你，请记得点个赞。 作为内容站，持续输出高质量的内容是件不太容易的事情，本站的任何文章，你可任意转载，但请保留原文链接。如有兴趣，欢迎一起码字。 关于作者喜欢周杰伦歌曲的90后程序猿，就职于粗粮厂。目前致力于JavaScript大法，ReactNative是目前的工作。技汤一站，请自取一篇饮 如果您遇到麻烦或对本站有疑问，请在本站找到那个白色❓号并点击查看 没时间再解释了，赶紧上车…"
+        },
+        {
+            "title": "移动互联网？",
+            "date": "2017-03-18T11:56:20.000Z",
+            "updated": "2018-01-20T13:02:33.142Z",
+            "comments": false,
+            "path": "app/index.html",
+            "permalink": "https://jilonglv.github.io/app/index.html",
+            "excerpt": "",
+            "text": "憋闹了，还没App。网页写的差不多了，再考虑写移动互联网….public static void main(String args[]) throws Exception &#123; for (int i = 0; ; i++) &#123; Thread.sleep(1000); System.out.println(\"嗯、写码，呵呵...\" + i); &#125;&#125; fyiguhjnwkefnmwoeih68yuih4jnkrfewdfyugbijnk.wfww3f 5jhyrtgve5jhytbgvef5grefvqwu6ejynhbvwer5jr5hb4gevgwh54uh3g4weab eh43eg223t4whretbvfw345u36jhtbevww32q4wu5ejhtbevwgw354uhtbgevfcewg 擦了下键盘，这些你可以拿去当QQ密码，绝不会被盗号，不用谢！"
+        },
+        {
+            "title": "QA - 帮助那个中心...",
+            "date": "2017-03-29T10:49:38.000Z",
+            "updated": "2018-01-20T13:45:41.824Z",
+            "comments": true,
+            "path": "help/index.html",
+            "permalink": "https://jilonglv.github.io/help/index.html",
+            "excerpt": "",
+            "text": "这里不发表情，准备说点严肃、实在的…Q: 这网站怎么弄的，还挺好看的啊？ A: 本站是静态博客，通过hexo生成，主题是我自己写的。免费使用，已开源至GitHub，本站底部有它们的链接 Q: 为什么博客有时候打开速度很慢，一直在加载呢？ A: 评论组件使用的Disqus等资源的服务器在墙外，你懂的…(不懂问搜狗)。不过不影响文章阅读。 Q: 我也想用这个主题搭个博客，不知道怎么弄？ A: 先去hexo官网看看，学会用这个写作并学会使用gitpages之类的部署博客。教程谷歌一下遍地皆是。主题是免费的，在本站底部可找到链接，根据文档自及配置就好了。遇到问题，在本页留言即可，我会很愿意帮助你的。需要注意的是主题有全站https开关，在主题_config.yml文件的fullHttps处配置。如配置不当r某些文件就无法正确引用，加载粗来的页面会很挫。 Q: 你这主题，我配置了怎么运行报错啊，跑不起来啊？ A: 关于使用主题出错，请先前往JSimple-issues寻找答案，说不定你遇到的问题，已经有人碰到而我也回答解决方式了。关于主题的任何问题，我都会在那里回复 Q: 无法自由翱翔互联网咋办？ A: 着急吃饭且自甘有钱的朋友请直接购买蓝灯。不着急就慢慢找吧，像GreenVPN、www.ishadowsocks.com都是很好的方案。另外有hosts方案，请前往这个项目UsefullShells Q: 如何找到一个靠谱的对象？ 如果你有资源，记得第一时间告诉我… Q: 我觉得站长你挺有意思的，能交个朋友吗？ A: 可以。快上车吧：老表 暂时更新这些，需要什么本文底部留言……"
+        },
+        {
+            "title": "嘉宾推荐",
+            "date": "2017-02-07T05:22:22.000Z",
+            "updated": "2018-01-20T13:30:39.320Z",
+            "comments": false,
+            "path": "links/index.html",
+            "permalink": "https://jilonglv.github.io/links/index.html",
+            "excerpt": "",
+            "text": "以下摘录有趣、有意义、有影响力、有正能量的博客、资源 此处不做网址导航，因此不接受以SEO为目的的友链。排序不分那啥… JS大法系 阮一峰博客闲情写手腾讯AlloyTeam 苹果派 王巍（喵神）的博客Objc.ioSwifter 娱乐圈 VIMCodeTank 开车群 老表 公众号 没有链接，请直接关注微信公众号：小道消息、MacTalk等等"
+        },
+        {
+            "title": "时光轴",
+            "date": "2017-02-07T05:23:27.000Z",
+            "updated": "2017-04-18T07:05:25.000Z",
+            "comments": false,
+            "path": "timeline/index.html",
+            "permalink": "https://jilonglv.github.io/timeline/index.html",
+            "excerpt": "",
+            "text": "时光轴嘛，得先有时光，会更新的，别急……"
+        },
+        {
+            "title": "标签云",
+            "date": "2017-02-04T07:37:12.000Z",
+            "updated": "2017-04-18T07:05:18.000Z",
+            "comments": true,
+            "path": "tags/index.html",
+            "permalink": "https://jilonglv.github.io/tags/index.html",
+            "excerpt": "",
+            "text": ""
+        }
+    ],
+    "posts": [
+        {
+            "title": "在hexo博客中打造相对完美的URL",
+            "slug": "build-perfect-url-in-hexo",
+            "date": "2017-01-07T14:54:05.000Z",
+            "updated": "2017-04-24T08:45:09.000Z",
+            "comments": true,
+            "path": "big-front-end/build-perfect-url-in-hexo.html",
+            "link": "",
+            "permalink": "https://jilonglv.github.io/big-front-end/build-perfect-url-in-hexo.html",
+            "excerpt": "",
+            "text": "这里讨论一个处女座的情怀问题如果你是全部用英文写作，那么这篇文章对你确实没什么Luan用。对hexo而言，我们可以很轻松的自定义文章URL。 对数字敏感，你可以在站点的_config.yml文件中permalink处配置成:year/:month/:day/:title/。是的，这个不需要改动，保持hexo默认就是 结果是：http://localhost:4000/2017/04/18/demo 有静态网页情结的你，认为.html结尾利于SEO，则可以把permalink配置成:category/:title.html或:category/:timestamp.html 结果是：http://localhost:4000/demo/1492523268.html 注意第二种使用分类别名，请一定要设置两个地方： // 1、站点的_config.yml中找到以下部分# Category &amp; Tagdefault_category: uncategorizedcategory_map: 演示: demotag_map:// 2、scaffolds/post.md文件中改成如下--- title: &#123;&#123; title &#125;&#125; date: &#123;&#123; date &#125;&#125;tags: timestamp: &#123;&#123; date &#125;&#125; categories: 演示--- 是的，增加了两行，在写文章时，通过hexo n demo后，生成的demo.md文件里如下： --- title: hellocategories: 演示date: 2017-04-18 22:19:45timestamp: 1447295415tags:--- 此时需要手动的把timestamp手动改成时间戳，因为这是你自定义的变量，当前hexo还没有这个系统变量使用，所以只能手动配置。 通过以上方式体现的URL更有意义，但是用title或timestamp面临两个问题，前者遇到中文就呵呵了，后者虽精炼但无疑义。所以还有改进的空间，即使用permalink: :category/:title.html这样配置时，创建文章用英文标题。这样解决了中文一坨乱码且意义很明显，读者一看就知道这是哪个分类下的什么文章！ 是不是很美好，赶紧试试去吧~",
+            "categories": [
+                {
+                    "name": "前端",
+                    "slug": "big-front-end",
+                    "permalink": "https://jilonglv.github.io/categories/big-front-end/"
+                }
+            ],
+            "tags": [
+                {
+                    "name": "hexo",
+                    "slug": "hexo",
+                    "permalink": "https://jilonglv.github.io/tags/hexo/"
+                },
+                {
+                    "name": "网站",
+                    "slug": "website",
+                    "permalink": "https://jilonglv.github.io/tags/website/"
+                }
+            ]
+        }
+    ]
+}
