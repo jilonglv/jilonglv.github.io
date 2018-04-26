@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=https://jilonglv.github.io/warn.html">
+<![endif]-->
+    <meta charset="utf-8">
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="mobile-agent" content="format=html5; url=https://jilonglv.github.io">
+    <meta name="author" content="吕先生(https://jilonglv.github.io)">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+
+    <title>Zookeeper部署及zk-ui监控工具 - StoryBoy</title>
+
+    <meta name="keywords" content="zookeeper,Zookeeper部署及zk-ui监控工具">
+
+    <meta name="description " content="Zookeeper部署及轻量级zk-ui监控工具">
+</head>
+
+<body>
+    <div id="nav">
+        <nav class="nav-menu">
+            <a class="site-name current" href="/" title="StoryBoy">StB</a>
+            <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+            <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+            <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+            <!-- custom single page of menus -->
+
+
+            <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+
+        </nav>
+    </div>
+
+    <div class="nav-user">
+        <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+        <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+        <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+    </div>
+
+    <div id="wrapper" class="clearfix">
+        <div id="body">
+            <div class="main" id="main">
+                <div id="cover">
+                    <div class="cover-img"></div>
+                    <div class="cover-info">
+
+                        <h1 class="cover-siteName">StoryBoy</h1>
+                        <h3 class="cover-siteTitle">做产品，写代码</h3>
+                        <p class="cover-siteDesc">一个关注技术与人文的IT博客</p>
+                        <div class="cover-sns">
+
+                            <div class="btn btn-github">
+                                <a href="https://jilonglv.github.io" target="_blank" title="github" ref="friend"><i class="fa fa-github"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title">
+                    <ul>
+                        <li><a href="/">最新</a></li>
+
+
+                        <li class="">
+                            <a href="/categories/big-front-end" data-name="前端">前端</a>
+                        </li>
+
+                        <li class="active">
+                            <a href="/categories/server-side" data-name="后台">后台</a>
+                        </li>
+
+                        <li class="">
+                            <a href="/categories/design" data-name="设计">设计</a>
+                        </li>
+
+                        <li class="">
+                            <a href="/categories/resource" data-name="资源">资源</a>
+                        </li>
+
+
+                        <li class="page-search">
+                            <form id="search" class="search-form">
+                                <label for="s" class="sr-only">请输入关键字</label>
+                                <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+                                <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+                            </form>
+                            <div class="ins-search">
+                                <div class="ins-search-mask"></div>
+                                <div class="ins-search-container">
+                                    <div class="ins-input-wrapper">
+                                        <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+                                        <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+                                    </div>
+                                    <div class="ins-section-wrapper">
+                                        <div class="ins-section-container"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                (function (window) {
+                                    var INSIGHT_CONFIG = {
+                                        TRANSLATION: {
+                                            POSTS: '文章',
+                                            PAGES: '页面',
+                                            CATEGORIES: '分类',
+                                            TAGS: '标签',
+                                            UNTITLED: '(无标题)',
+                                        },
+                                        ROOT_URL: '/',
+                                        CONTENT_URL: '/content.json',
+                                    };
+                                    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+                                })(window);
+                            </script>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="main-inner">
+                    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                        <div class="post-header">
+                            <div class="post-author clearfix">
+                                <a class="avatar fleft" href="https://jilonglv.github.io" target="_blank">
+                                    <img width="48" src="/images/favicon.png" alt="avatar"/>
+                                </a>
+                                <p><span class="label">作者</span>
+                                    <a href="https://jilonglv.github.io/about" target="_blank">吕先生</a>
+                                    <span title="最后编辑于2017-04-22">2017-04-22</span>
+                                </p>
+                                <p>一个写代码的</p>
+                            </div>
+                            <h2 class="post-title">Zookeeper部署及zk-ui监控工具</h2>
+                            <div class="post-meta">
+                                您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                            </div>
+                        </div>
+                        <div class="post-content markdown-body">
+                            <h1 id="">准备：</h1>
+                            <p><a href="https://www.apache.org/dyn/closer.cgi/zookeeper/">下载zookeeper</a><br>
+                                <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">下载jdk</a> </p>
+                            <h1 id="-1">安装配置</h1>
+                            <ol>
+                                <li><span><span>设置JAVA_HOME环境变量（配置好后，<strong>注销电脑生效</strong>）：<br>
+                            以管理员身份运行：</span></span>
+                                </li>
+                            </ol>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">wmic environment create name</span><span class="pun">=</span><span class="str">"JAVA_HOME"</span><span class="pun">,</span><span class="pln">username</span><span class="pun">=</span><span class="str">"&lt;system&gt;"</span><span class="pun">,</span><span class="typ">VariableValue</span><span class="pun">=</span><span class="str">"C:\Program Files\Java\jdk1.8.0_131"</span></code></span></span></li></ol></pre>
+                            <ol>
+                                <li><span><span>配置<br>
+                            2.1 conf目录下 copy zoo_sample.cfg zoo.cfg 并修改配置<br>
+                            其他可默认，主要修改一下配置即可 <code class="prettyprint code-in-text prettyprinted" style="font-size: 16px; line-height: 18px;"><span class="pln"> dataDir</span>
+                                    <span
+                                        class="pun">=</span><span class="pln">G</span><span class="pun">:</span><span class="pln">\\</span>
+                                        <span
+                                            class="typ">Software</span><span class="pln">\Architect\zookeeper</span><span class="pun">-</span>
+                                            <span
+                                                class="lit">3.5</span><span class="pun">.</span><span class="lit">3</span><span class="pun">-</span>
+                                                <span
+                                                    class="pln">beta\data </span>
+                                                    </code><br> 2.2 集群配置 <code class="prettyprint code-in-text prettyprinted" style="font-size: 16px; line-height: 18px;"><span class="pln"> initLimit</span><span class="pun">=</span><span class="lit">5</span><br><span class="pln"> syncLimit</span><span class="pun">=</span><span class="lit">2</span><br><span class="pln"> server</span><span class="pun">.</span><span class="lit">1</span><span class="pun">=</span><span class="lit">192.168</span><span class="pun">.</span><span class="lit">211.1</span><span class="pun">:</span><span class="lit">2888</span><span class="pun">:</span><span class="lit">3888</span><br><span class="pln"> server</span><span class="pun">.</span><span class="lit">2</span><span class="pun">=</span><span class="lit">192.168</span><span class="pun">.</span><span class="lit">211.2</span><span class="pun">:</span><span class="lit">2888</span><span class="pun">:</span><span class="lit">3888</span><span class="pln"> </span></code></span>
+                                                    </span>
+                                </li>
+                                <li><span><span>测试
+                            双击启动bin目录（G:\Software\Architect\zookeeper-3.5.3-beta\bin）的zkServer.cmd 
+                            查看端口是否正常：</span></span>
+                                </li>
+                            </ol>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">netstat </span><span class="pun">-</span><span class="pln">aon </span><span class="pun">|</span><span class="pln"> findstr </span><span class="lit">2181</span></code></span></span></li></ol></pre>
+                            <h1 id="zookeeper">监控zookeeper软件</h1>
+                            <p>zk ui部署<br> 编译zkui：（懒人可直接下载编译好的资源
+                                <a href="https://github.com/jilonglv/dataset/blob/master/zkui-2.0.zip">zkui-2.0</a>)</p>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">cd </span><span class="pun">/</span><span class="pln">d G</span><span class="pun">:</span><span class="pln">\Software\Architect\zkui</span><span class="pun">-</span><span class="pln">master</span></code></span></span></li><li class="L1"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">mvn clean install</span></code></span></span></li></ol></pre>
+                            <p>将config.cfg拷贝到jar同目录下，并修改配置</p>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">cd </span><span class="pun">/</span><span class="pln">d G</span><span class="pun">:</span><span class="pln">\Software\Architect\zkui</span><span class="pun">-</span><span class="pln">master\target</span></code></span></span></li><li class="L1"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">copy </span><span class="pun">..</span><span class="pln">\config</span><span class="pun">.</span><span class="pln">cfg </span><span class="pun">.</span><span class="pln">\</span></code></span></span></li></ol></pre>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="com">#Server Port</span></code></span></span></li><li class="L1"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">serverPort</span><span class="pun">=</span><span class="lit">9090</span></code></span></span></li><li class="L2"><span><span><code style="font-size: 10px;line-height: 12px"><span class="com">#Comma seperated list of all the zookeeper servers</span></code></span></span></li><li class="L3"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">zkServer</span><span class="pun">=</span><span class="lit">10.0</span><span class="pun">.</span><span class="lit">0.7</span><span class="pun">:</span><span class="lit">2181</span></code></span></span></li><li class="L4"><span><span><code style="font-size: 10px;line-height: 12px"><span class="com">#可调节连接zookeeper的超时时间</span></code></span></span></li><li class="L5"><span><span><code style="font-size: 10px;line-height: 12px"><span class="com">#zkSessionTimeout=20</span></code></span></span></li></ol></pre>
+                            <p>启动zkui</p>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">java </span><span class="pun">-</span><span class="pln">jar zkui</span><span class="pun">-</span><span class="lit">2.0</span><span class="pun">-</span><span class="pln">SNAPSHOT</span><span class="pun">-</span><span class="pln">jar</span><span class="pun">-</span><span class="kwd">with</span><span class="pun">-</span><span class="pln">dependencies</span><span class="pun">.</span><span class="pln">jar</span></code></span></span></li></ol></pre>
+                            <p>制作成批处理zkuiStart.cmd</p>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">cd </span><span class="pun">/</span><span class="pln">d </span><span class="pun">%~</span><span class="pln">dp0</span></code></span></span></li><li class="L1"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">java </span><span class="pun">-</span><span class="pln">jar zkui</span><span class="pun">-</span><span class="lit">2.0</span><span class="pun">-</span><span class="pln">SNAPSHOT</span><span class="pun">-</span><span class="pln">jar</span><span class="pun">-</span><span class="kwd">with</span><span class="pun">-</span><span class="pln">dependencies</span><span class="pun">.</span><span class="pln">jar</span></code></span></span></li></ol></pre>
+                            <p><a href="http://127.0.0.1:9090/login">登录</a><br> username: admin, pwd: manager<br> zookeeper未启动时，会报错误如下：
+                            </p>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="typ">KeeperErrorCode</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">ConnectionLoss</span><span class="pln"> </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">/</span></code></span></span></li></ol></pre>
+                            <p></p>
+                            <h1 id="zookeeperwindows">将zookeeper做成windows服务</h1>
+                            <ol>
+                                <li><span><span><a href="http://archive.apache.org/dist/commons/daemon/binaries/windows/">下载prunsrv</a><br>
+                            以管理员身份运行批处理（设置ZOOKEEPER<em>SERVICE，ZOOKEEPER</em>HOME环境变量）：</span></span>
+                                </li>
+                            </ol>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">wmic environment create name</span><span class="pun">=</span><span class="str">"ZOOKEEPER_SERVICE"</span><span class="pun">,</span><span class="pln">username</span><span class="pun">=</span><span class="str">"&lt;system&gt;"</span><span class="pun">,</span><span class="typ">VariableValue</span><span class="pun">=</span><span class="str">"zookeeperService"</span></code></span></span></li><li class="L1"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">wmic environment create name</span><span class="pun">=</span><span class="str">'ZOOKEEPER_HOME'</span><span class="pun">,</span><span class="pln">username</span><span class="pun">=</span><span class="str">"&lt;system&gt;"</span><span class="pun">,</span><span class="typ">VariableValue</span><span class="pun">=</span><span class="str">"G:\Software\Architect\zookeeper-3.5.3-beta"</span></code></span></span></li></ol></pre>
+                            <ol>
+                                <li><span><span>拷贝文件    </span></span>
+                                </li>
+                            </ol>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pun">　</span><span class="lit">64</span><span class="pun">位机器用</span><span class="pln">amd64</span><span class="pun">/</span><span class="pln">prunsrv</span><span class="pun">.</span><span class="pln">exe </span></code></span></span></li><li class="L1"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">　　a</span><span class="pun">.</span><span class="pln"> </span><span class="pun">复制</span><span class="pln"> commons</span><span class="pun">-</span><span class="pln">daemon</span><span class="pun">-</span><span class="lit">1.0</span><span class="pun">.</span><span class="lit">15</span><span class="pun">-</span><span class="pln">bin</span><span class="pun">-</span><span class="pln">windows</span><span class="pun">/</span><span class="pln">amd64</span><span class="pun">/</span><span class="pln">prunsrv</span><span class="pun">.</span><span class="pln">exe </span><span class="pun">至</span><span class="pln"> zookeeper\b</span><span class="kwd">in</span><span class="pun">目录下</span></code></span></span></li><li class="L2"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">　　</span><span class="pun">这是做服务的执行程序</span><span class="pln"> </span></code></span></span></li><li class="L3"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">　　b</span><span class="pun">.</span><span class="pln"> </span><span class="pun">复制</span><span class="pln"> commons</span><span class="pun">-</span><span class="pln">daemon</span><span class="pun">-</span><span class="lit">1.0</span><span class="pun">.</span><span class="lit">15</span><span class="pun">-</span><span class="pln">bin</span><span class="pun">-</span><span class="pln">windows</span><span class="pun">/</span><span class="pln">prunmgr</span><span class="pun">.</span><span class="pln">exe </span><span class="pun">至</span><span class="pln"> zookeeper\b</span><span class="kwd">in</span><span class="pun">目录下</span></code></span></span></li></ol></pre>
+                            <ol>
+                                <li><span><span>install.bat安装脚本（放于zookeeper bin目录下）：</span></span>
+                                </li>
+                            </ol>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">prunsrv</span><span class="pun">.</span><span class="pln">exe </span><span class="str">"//IS//%ZOOKEEPER_SERVICE%"</span><span class="pln"> </span><span class="pun">^</span></code></span></span></li><li class="L1"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">DisplayName</span><span class="pun">=</span><span class="str">"Zookeeper (%ZOOKEEPER_SERVICE%)"</span><span class="pln"> </span><span class="pun">^</span></code></span></span></li><li class="L2"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">Description</span><span class="pun">=</span><span class="str">"Zookeeper (%ZOOKEEPER_SERVICE%)"</span><span class="pln"> </span><span class="pun">^</span></code></span></span></li><li class="L3"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">Startup</span><span class="pun">=</span><span class="kwd">auto</span><span class="pln"> </span><span class="pun">--</span><span class="typ">StartMode</span><span class="pun">=</span><span class="pln">exe </span><span class="pun">^</span></code></span></span></li><li class="L4"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">StartPath</span><span class="pun">=%</span><span class="pln">ZOOKEEPER_HOME</span><span class="pun">%</span><span class="pln"> </span><span class="pun">^</span></code></span></span></li><li class="L5"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">StartImage</span><span class="pun">=%</span><span class="pln">ZOOKEEPER_HOME</span><span class="pun">%</span><span class="pln">\b</span><span class="kwd">in</span><span class="pln">\zkServer</span><span class="pun">.</span><span class="pln">cmd </span><span class="pun">^</span></code></span></span></li><li class="L6"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">StopPath</span><span class="pun">=%</span><span class="pln">ZOOKEEPER_HOME</span><span class="pun">%</span><span class="pln">\ </span><span class="pun">^</span></code></span></span></li><li class="L7"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">StopImage</span><span class="pun">=%</span><span class="pln">ZOOKEEPER_HOME</span><span class="pun">%</span><span class="pln">\b</span><span class="kwd">in</span><span class="pln">\zkServerStop</span><span class="pun">.</span><span class="pln">cmd </span><span class="pun">^</span></code></span></span></li><li class="L8"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">StopMode</span><span class="pun">=</span><span class="pln">exe </span><span class="pun">--</span><span class="typ">StopTimeout</span><span class="pun">=</span><span class="lit">5</span><span class="pln"> </span><span class="pun">^</span></code></span></span></li><li class="L9"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">LogPath</span><span class="pun">=%</span><span class="pln">ZOOKEEPER_HOME</span><span class="pun">%</span><span class="pln"> </span><span class="pun">--</span><span class="typ">LogPrefix</span><span class="pun">=</span><span class="pln">zookeeper</span><span class="pun">-</span><span class="pln">wrapper </span><span class="pun">^</span></code></span></span></li><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">        </span><span class="pun">--</span><span class="typ">PidFile</span><span class="pun">=</span><span class="pln">zookeeper</span><span class="pun">.</span><span class="pln">pid </span><span class="pun">--</span><span class="typ">LogLevel</span><span class="pun">=</span><span class="typ">Info</span><span class="pln"> </span><span class="pun">--</span><span class="typ">StdOutput</span><span class="pun">=</span><span class="kwd">auto</span><span class="pln"> </span><span class="pun">--</span><span class="typ">StdError</span><span class="pun">=</span><span class="kwd">auto</span></code></span></span></li></ol></pre>
+                            <ol>
+                                <li><span><span>zkServerStop.cmd停止服务：</span></span>
+                                </li>
+                            </ol>
+                            <pre class="prettyprint linenums prettyprinted" style="font-size: 10px; line-height: 12px;"><ol class="linenums"><li class="L0"><span><span><code style="font-size: 10px;line-height: 12px"><span class="lit">@echo</span><span class="pln"> off</span></code></span></span></li><li class="L1"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">setlocal</span></code></span></span></li><li class="L2"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">TASKLIST </span><span class="pun">/</span><span class="pln">svc </span><span class="pun">|</span><span class="pln"> findstr </span><span class="pun">/</span><span class="pln">c</span><span class="pun">:</span><span class="str">"%ZOOKEEPER_SERVICE%"</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">%</span><span class="pln">ZOOKEEPER_HOME</span><span class="pun">%</span><span class="pln">\zookeeper_svc</span><span class="pun">.</span><span class="pln">pid</span></code></span></span></li><li class="L3"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">FOR </span><span class="pun">/</span><span class="pln">F </span><span class="str">"tokens=2 delims= "</span><span class="pln"> </span><span class="pun">%%</span><span class="pln">G IN </span><span class="pun">(%</span><span class="pln">ZOOKEEPER_HOME</span><span class="pun">%</span><span class="pln">\zookeeper_svc</span><span class="pun">.</span><span class="pln">pid</span><span class="pun">)</span><span class="pln"> DO </span><span class="pun">(</span></code></span></span></li><li class="L4"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">    </span><span class="lit">@set</span><span class="pln"> zkPID</span><span class="pun">=%%</span><span class="pln">G</span></code></span></span></li><li class="L5"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pun">)</span></code></span></span></li><li class="L6"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">taskkill </span><span class="pun">/</span><span class="pln">PID </span><span class="pun">%</span><span class="pln">zkPID</span><span class="pun">%</span><span class="pln"> </span><span class="str">/T /</span><span class="pln">F</span></code></span></span></li><li class="L7"><span><span><code style="font-size: 10px;line-height: 12px"><span class="kwd">del</span><span class="pln"> </span><span class="pun">%</span><span class="pln">ZOOKEEPER_HOME</span><span class="pun">%/</span><span class="pln">zookeeper_svc</span><span class="pun">.</span><span class="pln">pid</span></code></span></span></li><li class="L8"><span><span><code style="font-size: 10px;line-height: 12px"><span class="pln">endlocal</span></code></span></span></li></ol></pre>
+                            <strong>特别的JAVA<em>HOME一定要设置为系统变量，否则会报JAVA</em>HOME未设置</strong>
+                            <h1 id="-2">参考资料：</h1>
+                            <p><a href="https://blog.csdn.net/haitianisgood/article/details/72512607">zk ui部署</a><br>
+                                <a href="https://www.cnblogs.com/mrluo735/p/5345879.html">安装成windows服务</a> </p>
+                        </div>
+                        <div class="post-tool">
+                            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+                            </a>
+                        </div>
+
+                        <div class="post-tags">标签：
+
+                            <a href="/tags/serverSide/">zookeeper</a>
+
+                        </div>
+
+                    </article>
+
+                    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+
+
+                    <div id="disqus_thread"></div>
+                    <script>
+                        /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+                        var disqus_config = function () {
+                            this.page.url = 'https://jilonglv.github.io/server-side/zookeeper.html';
+                            this.page.identifier = 'server-side/zookeeper.html';
+                        };
+                        (function () { // DON'T EDIT BELOW THIS LINE
+                            var d = document, disqus_shortname = 'shuoit', s = d.createElement('script');
+                            s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+
+                </div>
+                <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            </div>
+            <!-- end #main-->
+        </div>
+        <!-- end #body -->
+        <footer class="footer">
+            <div class="footer-inner">
+                <p>
+                    <a href="/about" title="关于本站">关于本站</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+                    <!-- 自定义链接 -->
+                    <a href="/help" title="help">急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+                    <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+                    <a href="/app" title="App下载">App下载</a>
+                </p>
+                <p>
+                    本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立
+                    <a href="/timeline" id="siteBuildingTime"></a>天<br/> ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+                    ，主题&nbsp
+                    <a href="https://jilonglv.github.io/hexo-theme-jsimple" target="_blank">JSimple</a> ，作者
+                    <a href="https://jilonglv.github.io" target="_blank">吕先生</a> ，Hosted by <a href="https://pages.coding.me"
+                        style="font-weight: bold">Coding Pages</a>
+                </p>
+
+                <!-- Tencent Analytics -->
+                <script type="text/javascript" src="//tajs.qq.com/stats?sId=65036274" charset="UTF-8"></script>
+
+
+            </div>
+        </footer>
+        <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/js/InsightSearch.js"></script>
+        <script src="/js/SimpleCore.js"></script>
+
+    </div>
+    <div class="fixed-btn">
+        <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+    </div>
+    <script>
+                        $(function () {
+                            SimpleCore.init({
+                                buildingTime: '04/25/2018',
+                                current: $('.post-tags').length > 0 ? 'post' : 'archive',
+                                snsQRCode: '/images/sns-qrcode.png',
+                                donateImg: '/images/donate-qr.png',
+                            });
+                        });
+    </script>
+</body>
+
+</html>
